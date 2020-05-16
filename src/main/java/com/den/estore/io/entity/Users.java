@@ -1,6 +1,7 @@
 package com.den.estore.io.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Table(name = "users")
-public class User implements Serializable {
+public class Users implements Serializable {
 
   private static final long serialVersionUID = -2566801081703033859L;
 
@@ -35,6 +36,7 @@ public class User implements Serializable {
   @Column(nullable = false)
   private String username;
 
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   @Column(nullable = false)
   private String encryptedPassword;
 
