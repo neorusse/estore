@@ -6,7 +6,7 @@
 
 A web [app](https://#.com/) for listing products for users to purchase online.
 
-App Url: [Contact Manager App](https://#.com/)
+App Url: [EStore](https://#.com/)
 
 ### Table of Content
 
