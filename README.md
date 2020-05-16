@@ -24,7 +24,7 @@ App Url: [EStore](https://#.com/)
 
 Modern Java features and technology was used for this [project](https://#.com/).
 
-Spring Boot
+Spring Framework
 
 Postgres
 
@@ -37,14 +37,22 @@ AWS ElasticBeanStalk
 ### Building from Source
 You need Java 1.8 and a bash-like shell.
 
-### Building
-Invoke the build at the root of the project:
+### Package the application
 
-----
-    $ ./mvnw spring-boot:run
-----
+- Package the application
 
-The app runs on port 8080.
+`$ ./mvnw clean package`
+
+> To skip the tests use: `-DskipTests=true` 
+
+### Run
+
+`$ docker-compose up --build`
+
+### Verify the application is running
+
+> Application listens on port 9000
+
 
 ---
 

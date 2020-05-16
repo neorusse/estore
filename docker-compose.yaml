@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12
+    networks:
+      - spring-boot-postgres-network
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: topple
+      POSTGRES_PASSWORD: estoredb
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "9000:8080"
+    networks:
+      - spring-boot-postgres-network
+    depends_on:
+      - db
+
+  networks:
+    spring-boot-postgres-network:
+      driver: bridge
