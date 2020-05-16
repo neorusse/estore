@@ -1,5 +1,6 @@
 package com.den.estore.dto;
 
+import com.den.estore.io.entity.Cart;
 import lombok.Data;
 
 @Data
@@ -14,4 +15,6 @@ public class UserDTO {
   private String password;
   private String confirmPassword;
   private String encryptedPassword;
+  private Cart cart;
+
 }
