@@ -1,6 +1,7 @@
 package com.den.estore.service.impl;
 
 import com.den.estore.dto.UserDTO;
+import com.den.estore.exceptions.UserServiceException;
 import com.den.estore.io.entity.Cart;
 import com.den.estore.io.entity.Users;
 import com.den.estore.io.repository.CartRepository;
@@ -35,11 +36,11 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserDTO createUser(UserDTO user) {
 
-    if (userRepository.findByEmail(user.getEmail()) != null) throw new RuntimeException("Email already exists");
+    if (userRepository.findByEmail(user.getEmail()) != null) throw new UserServiceException("Email already exists");
 
-    if (userRepository.findByUsername(user.getUsername()) != null) throw new RuntimeException("Username already exists");
+    if (userRepository.findByUsername(user.getUsername()) != null) throw new UserServiceException("Username already exists");
 
-    if (!user.getPassword().equals(user.getConfirmPassword())) throw new RuntimeException("Passwords do not match");
+    if (!user.getPassword().equals(user.getConfirmPassword())) throw new UserServiceException("Passwords do not match");
 
     ModelMapper modelMapper = new ModelMapper();
     Users userEntity = modelMapper.map(user, Users.class);
