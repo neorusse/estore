@@ -7,6 +7,8 @@ import com.den.estore.model.response.ErrorMessages;
 import com.den.estore.model.response.UserRes;
 import com.den.estore.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/user")
 public class UsersController {
 
+  // adding logs
+  private final Logger logger = LoggerFactory.getLogger(UsersController.class);
+
   @Autowired
   UserService userService;
 
   @PostMapping("/signup")
   public UserRes createUser(@RequestBody UserSignUpRequestModel userDetails) {
+
+    logger.info("HTTP POST request received at /api/user/signup url");
 
     if(userDetails.getUsername().isEmpty()) throw new UserServiceException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
 
